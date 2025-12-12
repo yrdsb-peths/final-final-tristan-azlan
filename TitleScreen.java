@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends MyWorld
 {
+    Label titleLabel = new Label ("Brick Breaker", 60);
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -29,7 +30,7 @@ public class TitleScreen extends MyWorld
     public void act()
     {
         if (Greenfoot.isKeyDown("space")) {
-            Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new MyWorld());
         }
         if (Greenfoot.isKeyDown("h")) {
             showInstructions();
@@ -42,4 +43,4 @@ public class TitleScreen extends MyWorld
         showText("Move paddle with ←/→. Don't let the ball drop 3 times.", getWidth() / 2, 330);
     }
 }
-}
+
