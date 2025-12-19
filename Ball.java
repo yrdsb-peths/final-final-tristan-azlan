@@ -20,12 +20,13 @@ public class Ball extends Actor
         // Add your action code here.
         moveBall();
         bounceWalls();
+        bouncePaddle();
     }
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
     }
-    // make ball bounce of walls
+    // make ball bounce off walls
     private void bounceWalls()
     {
         // reverse left/right movement
@@ -35,4 +36,15 @@ public class Ball extends Actor
         if (getY() <= 0)
         y = -y;  
     }
+    // make ball bounce off paddle
+    private void bouncePaddle()
+    {
+        if (isTouching(Paddle.class))
+        {
+            y = -Math.abs(y);
+            setLocation(getX(), getY() - 0); // Move ball slightly up
+        }
+    }
+    
+    
 }

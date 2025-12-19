@@ -39,7 +39,7 @@ public class TitleScreen extends MyWorld
 
     private void showInstructions()
     {
-        // Simple one-time message
+        // explanation
         showText("Move paddle with ←/→. Don't let the ball drop 3 times.", getWidth() / 2, 330);
     }
 }

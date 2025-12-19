@@ -13,6 +13,7 @@ public class MyWorld extends World {
         ball = new Ball();
         addObject(ball, 300, 335);
         
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 8; j++) {
                 int x = Greenfoot.getRandomNumber(12);
@@ -35,4 +36,6 @@ public class MyWorld extends World {
             }
         }
     }
+    // make game reset when ball touches ground
+    
 }

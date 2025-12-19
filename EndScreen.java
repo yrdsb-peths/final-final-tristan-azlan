@@ -15,5 +15,6 @@ public class EndScreen extends MyWorld
      */
     public EndScreen()
     {
+        
     }
 }
