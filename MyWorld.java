@@ -12,5 +12,8 @@ public class MyWorld extends World {
         // add ball
         ball = new Ball();
         addObject(ball, 300, 335);
+        
     }
+    // make game reset when ball touches ground
+    
 }

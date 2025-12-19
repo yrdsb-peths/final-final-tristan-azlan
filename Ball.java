@@ -45,5 +45,6 @@ public class Ball extends Actor
             setLocation(getX(), getY() - 0); // Move ball slightly up
         }
     }
-
+    
+    
 }
