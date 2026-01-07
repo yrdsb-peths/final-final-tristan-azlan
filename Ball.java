@@ -21,7 +21,9 @@ public class Ball extends Actor
         moveBall();
         bounceWalls();
         bouncePaddle();
+        breakBlock();
     }
+    
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
@@ -46,5 +48,26 @@ public class Ball extends Actor
         }
     }
     
-    
+    private void breakBlock()
+    {
+        Actor block1 = getOneIntersectingObject(Block.class);
+        if(block1 != null)
+        {
+            getWorld().removeObject(block1);
+        }
+        
+        Actor block2 = getOneIntersectingObject(Extra_Ball_Block.class);
+        if(block2 != null)
+        {
+            getWorld().removeObject(block2);
+            
+            getWorld().addObject(new Ball(), getX().Object(block2), getY().Object(block2));
+        }
+        
+        Actor block3 = getOneIntersectingObject(TNT_Block.class);
+        if(block3 != null)
+        {
+            getWorld().removeObject(block3);
+        }
+    }
 }
