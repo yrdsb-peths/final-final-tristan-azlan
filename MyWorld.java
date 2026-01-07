@@ -21,6 +21,7 @@ public class MyWorld extends World {
                 if(x==1)
                 {
                     TNT_Block block1 = new TNT_Block();
+                    block1.scale(10, 10);
                     addObject(block1, 55 + j * 70, 50 + i * 70);
                 }
                 else if(x==2)
