@@ -14,6 +14,13 @@ public class TNT_Block extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        GreenfootImage image = getImage();
+        
+        int newWidth = 80;
+        int newHeight = 80;
+        
+        image.scale(newWidth, newHeight);
+        
+        setImage(image);
     }
 }
