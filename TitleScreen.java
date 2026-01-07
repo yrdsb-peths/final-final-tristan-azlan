@@ -26,7 +26,7 @@ public class TitleScreen extends MyWorld
         showText("Use ← and → arrow keys to move the paddle", getWidth() / 2, 180);
         showText("Break all the bricks to advance to next level", getWidth() / 2, 200);
         showText("Press SPACE to start", getWidth() / 2, 260);
-        showText("Press H for help/instructions", getWidth() / 2, 300);
+        showText("Move paddle with ←/→. Don't lose all your balls.", getWidth() / 2, 330);
     }
 
     public void act()
@@ -34,15 +34,6 @@ public class TitleScreen extends MyWorld
         if (Greenfoot.isKeyDown("space")) {
             Greenfoot.setWorld(new MyWorld());
         }
-        if (Greenfoot.isKeyDown("h")) {
-            showInstructions();
-        }
-    }
-
-    private void showInstructions()
-    {
-        // explanation
-        showText("Move paddle with ←/→. Don't lose all your balls.", getWidth() / 2, 330);
     }
 }
 
