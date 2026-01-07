@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends MyWorld
 {
-    Label titleLabel = new Label ("Brick Breaker", 60);
+    Label titleLabel;
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -16,6 +16,8 @@ public class TitleScreen extends MyWorld
     public TitleScreen()
     {
         super(600, 400, 1);
+        titleLabel = new Label("Brick Breaker", 60);
+        addObject(titleLabel, getWidth() / 2, 100);
         prepare();
     }
 
@@ -40,7 +42,9 @@ public class TitleScreen extends MyWorld
     private void showInstructions()
     {
         // explanation
-        showText("Move paddle with ←/→. Don't let the ball drop 3 times.", getWidth() / 2, 330);
+        showText("Move paddle with ←/→. Don't lose all your balls.", getWidth() / 2, 330);
     }
 }
+
+
 
