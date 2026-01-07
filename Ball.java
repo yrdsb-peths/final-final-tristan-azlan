@@ -49,19 +49,23 @@ public class Ball extends Actor
     }
     
     private void breakBlock()
-    {
+    {       
         Actor block1 = getOneIntersectingObject(Block.class);
         if(block1 != null)
         {
             getWorld().removeObject(block1);
         }
         
+        Extra_Ball_Block brokenBlock2 = (Extra_Ball_Block) getOneIntersectingObject(Extra_Ball_Block.class);
         Actor block2 = getOneIntersectingObject(Extra_Ball_Block.class);
         if(block2 != null)
         {
+            int brokenBlock2X = brokenBlock2.getX();
+            int brokenBlock2Y = brokenBlock2.getY();
             getWorld().removeObject(block2);
             
-            getWorld().addObject(new Ball(), getX().Object(block2), getY().Object(block2));
+            Ball extraBall = new Ball();
+            getWorld().addObject((extraBall), brokenBlock2X, brokenBlock2Y);
         }
         
         Actor block3 = getOneIntersectingObject(TNT_Block.class);
