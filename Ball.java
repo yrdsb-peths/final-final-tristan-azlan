@@ -50,10 +50,33 @@ public class Ball extends Actor
     
     private void breakBlock()
     {       
+        Block brokenBlock1 = (Block) getOneIntersectingObject(Block.class);
         Actor block1 = getOneIntersectingObject(Block.class);
         if(block1 != null)
         {
+            int brokenBlock1X = brokenBlock1.getX();
+            int brokenBlock1Y = brokenBlock1.getY();
             getWorld().removeObject(block1);
+            
+            if(getY()<brokenBlock1Y)
+            {
+                y = -y;
+            }
+            
+            if(getY()>brokenBlock1Y)
+            {
+                y = -y;
+            }
+            
+            if(getX()<brokenBlock1X)
+            {
+                x = -x;
+            }
+            
+            if(getX()>brokenBlock1X)
+            {
+                x = -x;
+            }
         }
         
         Extra_Ball_Block brokenBlock2 = (Extra_Ball_Block) getOneIntersectingObject(Extra_Ball_Block.class);
@@ -66,12 +89,55 @@ public class Ball extends Actor
             
             Ball extraBall = new Ball();
             getWorld().addObject((extraBall), brokenBlock2X, brokenBlock2Y);
+            
+            if(getY()<brokenBlock2Y)
+            {
+                y = -y;
+            }
+            
+            if(getY()>brokenBlock2Y)
+            {
+                y = -y;
+            }
+            
+            if(getX()<brokenBlock2X)
+            {
+                x = -x;
+            }
+            
+            if(getX()>brokenBlock2X)
+            {
+                x = -x;
+            }
         }
         
+        TNT_Block brokenBlock3 = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
         Actor block3 = getOneIntersectingObject(TNT_Block.class);
         if(block3 != null)
         {
+            int brokenBlock3X = brokenBlock3.getX();
+            int brokenBlock3Y = brokenBlock3.getY();
             getWorld().removeObject(block3);
+            
+            if(getY()<brokenBlock3Y)
+            {
+                y = -y;
+            }
+            
+            if(getY()>brokenBlock3Y)
+            {
+                y = -y;
+            }
+            
+            if(getX()<brokenBlock3X)
+            {
+                x = -x;
+            }
+            
+            if(getX()>brokenBlock3X)
+            {
+                x = -x;
+            }
         }
     }
 }
