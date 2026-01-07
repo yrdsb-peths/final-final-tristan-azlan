@@ -42,9 +42,15 @@ public class Ball extends Actor
         if (isTouching(Paddle.class))
         {
             y = -Math.abs(y);
-            setLocation(getX(), getY() - 0); // Move ball slightly up
+            setLocation(getX(), getY() - 0); // move ball slightly up
         }
     }
-    
+    private void breakBrick()
+    {
+        if (isTouching(Block.class))
+        {
+            ;
+        }
+    }
     
 }
