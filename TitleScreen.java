@@ -15,7 +15,7 @@ public class TitleScreen extends MyWorld
      */
     public TitleScreen()
     {
-        super(600, 400, 1);
+        super();
         prepare();
     }
 
@@ -40,7 +40,7 @@ public class TitleScreen extends MyWorld
     private void showInstructions()
     {
         // explanation
-        showText("Move paddle with ←/→. Don't let the ball drop 3 times.", getWidth() / 2, 330);
+        showText("Move paddle with ←/→. Don't let the ball drop at all.", getWidth() / 2, 330);
     }
 }
 

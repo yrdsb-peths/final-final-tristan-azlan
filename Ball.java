@@ -15,13 +15,15 @@ public class Ball extends Actor
     // initial speed
     private int x = 3;
     private int y = -3;
+    private int breakCount = 0;
     public void act()
     {
         // Add your action code here.
         moveBall();
         bounceWalls();
         bouncePaddle();
-        breakBlock();
+        breakAndBounceBlock();
+        resetBalls();
     }
     
     private void moveBall()
@@ -48,7 +50,7 @@ public class Ball extends Actor
         }
     }
     
-    private void breakBlock()
+    private void breakAndBounceBlock()
     {       
         Block brokenBlock1 = (Block) getOneIntersectingObject(Block.class);
         Actor block1 = getOneIntersectingObject(Block.class);
@@ -58,25 +60,32 @@ public class Ball extends Actor
             int brokenBlock1Y = brokenBlock1.getY();
             getWorld().removeObject(block1);
             
-            if(getY()<brokenBlock1Y)
+            int newDirection1 = brokenBlock1Y + 40;
+            int newDirection2 = brokenBlock1Y - 40;
+            int newDirection3 = brokenBlock1X + 40;
+            int newDirection4 = brokenBlock1X - 40;
+            
+            if(getY()<newDirection1)
             {
                 y = -y;
             }
             
-            if(getY()>brokenBlock1Y)
+            if(getY()>newDirection2)
             {
                 y = -y;
             }
             
-            if(getX()<brokenBlock1X)
+            if(getX()<newDirection3)
             {
                 x = -x;
             }
             
-            if(getX()>brokenBlock1X)
+            if(getX()>newDirection4)
             {
                 x = -x;
             }
+            
+            breakCount = breakCount + 1;
         }
         
         Extra_Ball_Block brokenBlock2 = (Extra_Ball_Block) getOneIntersectingObject(Extra_Ball_Block.class);
@@ -90,25 +99,32 @@ public class Ball extends Actor
             Ball extraBall = new Ball();
             getWorld().addObject((extraBall), brokenBlock2X, brokenBlock2Y);
             
-            if(getY()<brokenBlock2Y)
+            int newDirection5 = brokenBlock2Y + 40;
+            int newDirection6 = brokenBlock2Y - 40;
+            int newDirection7 = brokenBlock2X + 40;
+            int newDirection8 = brokenBlock2X - 40;
+            
+            if(getY()<newDirection5)
             {
                 y = -y;
             }
             
-            if(getY()>brokenBlock2Y)
+            if(getY()>newDirection6)
             {
                 y = -y;
             }
             
-            if(getX()<brokenBlock2X)
+            if(getX()<newDirection7)
             {
                 x = -x;
             }
             
-            if(getX()>brokenBlock2X)
+            if(getX()>newDirection8)
             {
                 x = -x;
             }
+            
+            breakCount = breakCount + 1;
         }
         
         TNT_Block brokenBlock3 = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
@@ -119,25 +135,40 @@ public class Ball extends Actor
             int brokenBlock3Y = brokenBlock3.getY();
             getWorld().removeObject(block3);
             
-            if(getY()<brokenBlock3Y)
+            int newDirection9 = brokenBlock3Y + 40;
+            int newDirection10 = brokenBlock3Y - 40;
+            int newDirection11 = brokenBlock3X + 40;
+            int newDirection12 = brokenBlock3X - 40;
+            
+            if(getY()<newDirection9)
             {
                 y = -y;
             }
             
-            if(getY()>brokenBlock3Y)
+            if(getY()>newDirection10)
             {
                 y = -y;
             }
             
-            if(getX()<brokenBlock3X)
+            if(getX()<newDirection11)
             {
                 x = -x;
             }
             
-            if(getX()>brokenBlock3X)
+            if(getX()>newDirection12)
             {
                 x = -x;
             }
+            
+            breakCount = breakCount + 1;
+        }
+    }
+    
+    private void resetBalls()
+    {
+        if(breakCount == 21)
+        {
+            
         }
     }
 }
