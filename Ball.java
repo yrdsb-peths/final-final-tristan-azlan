@@ -55,8 +55,7 @@ public class Ball extends Actor
         }
     }
     
-<<<<<<< HEAD
-=======
+
     private void breakBlock()
     {       
         Block brokenBlock1 = (Block) getOneIntersectingObject(Block.class);
@@ -149,5 +148,5 @@ public class Ball extends Actor
             }
         }
     }
->>>>>>> b8d705993ed375c7e80c00071abaf9abdfe3874b
+
 }
