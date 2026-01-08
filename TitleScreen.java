@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TitleScreen extends MyWorld
+public class TitleScreen extends World
 {
     Label titleLabel = new Label ("Brick Breaker", 60);
     /**
@@ -15,7 +15,7 @@ public class TitleScreen extends MyWorld
      */
     public TitleScreen()
     {
-        super();
+        super(600, 400, 1);
         prepare();
     }
 
@@ -40,7 +40,7 @@ public class TitleScreen extends MyWorld
     private void showInstructions()
     {
         // explanation
-        showText("Move paddle with ←/→. Don't let the ball drop at all.", getWidth() / 2, 330);
+        showText("Move paddle with ←/→. Don't let all the balls drop.", getWidth() / 2, 330);
     }
 }
 
