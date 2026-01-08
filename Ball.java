@@ -12,13 +12,17 @@ public class Ball extends Actor
      * Act - do whatever the Ball wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    // add ball
+    private Ball ball;
+    
     // initial speed
     private int x = 3;
     private int y = -3;
     private int breakCount = 0;
     public void act()
     {
-        // Add your action code here.
+        
         moveBall();
         bounceWalls();
         bouncePaddle();
@@ -96,8 +100,8 @@ public class Ball extends Actor
             int brokenBlock2Y = brokenBlock2.getY();
             getWorld().removeObject(block2);
             
-            Ball extraBall = new Ball();
-            getWorld().addObject((extraBall), brokenBlock2X, brokenBlock2Y);
+            ball = new Ball();
+            getWorld().addObject(ball, brokenBlock2X, brokenBlock2Y);
             
             int newDirection5 = brokenBlock2Y + 40;
             int newDirection6 = brokenBlock2Y - 40;
@@ -168,7 +172,12 @@ public class Ball extends Actor
     {
         if(breakCount == 21)
         {
-            
+            Paddle finalBall = (Paddle) getOneIntersectingObject(Paddle.class);
+            Actor paddle = getOneIntersectingObject(Paddle.class);
+            if(paddle != null)
+            {
+                
+            }
         }
     }
 }
