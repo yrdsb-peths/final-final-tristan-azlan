@@ -9,10 +9,8 @@ public class MyWorld extends World {
         paddle = new Paddle();
         addObject(paddle, 300, 350);
         
-        // add ball
         ball = new Ball();
         addObject(ball, 300, 335);
-        
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 7; j++) {
