@@ -44,6 +44,7 @@ public class TitleScreen extends World
     private void showInstructions()
     {
         // explanation
+        showText("Move paddle with ←/→. Don't let all the balls drop.", getWidth() / 2, 330);
     }
 }
 
