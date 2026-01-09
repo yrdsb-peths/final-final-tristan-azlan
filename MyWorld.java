@@ -17,8 +17,6 @@ public class MyWorld extends World {
             breakCount = 0;
         }
     }
-    
-    
 
     public int getBreakCount() {
         return breakCount;
