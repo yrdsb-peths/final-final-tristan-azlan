@@ -3,6 +3,25 @@ import greenfoot.*;
 public class MyWorld extends World {
     private Paddle paddle;
     private Ball ball;
+    
+    private int breakCount = 0;
+
+    public void incrementBreakCount() {
+        breakCount++;
+        showText(breakCount + "!", 200, 180);
+    
+        if (breakCount >= 21) {
+            for (Ball b : getObjects(Ball.class)) {
+                b.resetBalls();
+            }
+            breakCount = 0;
+        }
+    }
+
+    public int getBreakCount() {
+        return breakCount;
+    }
+    
     public MyWorld() {
         super(600, 400, 1);
         // add paddle
@@ -33,7 +52,5 @@ public class MyWorld extends World {
                 }
             }
         }
-    }
-    // make game reset when ball touches ground
-    
+    } 
 }

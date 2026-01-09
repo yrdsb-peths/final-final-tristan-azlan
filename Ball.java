@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Ball here.
@@ -15,19 +16,15 @@ public class Ball extends Actor
     
     // add ball
     private Ball ball;
-    
     // initial speed
     private int x = 3;
     private int y = -3;
-    private int breakCount = 0;
     public void act()
     {
-        
         moveBall();
         bounceWalls();
         bouncePaddle();
         breakAndBounceBlock();
-        resetBalls();
     }
     
     private void moveBall()
@@ -89,7 +86,8 @@ public class Ball extends Actor
                 x = -x;
             }
             
-            breakCount = breakCount + 1;
+            MyWorld world = (MyWorld) getWorld();
+            world.incrementBreakCount();
         }
         
         Extra_Ball_Block brokenBlock2 = (Extra_Ball_Block) getOneIntersectingObject(Extra_Ball_Block.class);
@@ -128,7 +126,8 @@ public class Ball extends Actor
                 x = -x;
             }
             
-            breakCount = breakCount + 1;
+            MyWorld world = (MyWorld) getWorld();
+            world.incrementBreakCount();
         }
         
         TNT_Block brokenBlock3 = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
@@ -164,19 +163,42 @@ public class Ball extends Actor
                 x = -x;
             }
             
-            breakCount = breakCount + 1;
+            MyWorld world = (MyWorld) getWorld();
+            world.incrementBreakCount();
         }
     }
     
-    private void resetBalls()
-    {
-        if(breakCount == 21)
+    public void resetBalls()
+    {    
+        List<Ball> allBalls = getWorld().getObjects(Ball.class);
+        
+        for (Ball aB : allBalls)
         {
-            Paddle finalBall = (Paddle) getOneIntersectingObject(Paddle.class);
-            Actor paddle = getOneIntersectingObject(Paddle.class);
-            if(paddle != null)
+            if (aB.getOneIntersectingObject(Paddle.class) == null)
             {
+                getWorld().removeObject(aB);
+            }
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 7; j++) {
+                int x = Greenfoot.getRandomNumber(12);
                 
+                if(x==1)
+                {
+                    TNT_Block block1 = new TNT_Block();
+                    getWorld().addObject(block1, 45 + j * 85, 50 + i * 85);
+                }
+                else if(x==2)
+                {
+                    Extra_Ball_Block block2 = new Extra_Ball_Block();
+                    getWorld().addObject(block2, 45 + j * 85, 50 + i * 85);
+                }
+                else
+                {
+                    Block block3 = new Block();
+                    getWorld().addObject(block3, 45 + j * 85, 50 + i * 85);
+                }
             }
         }
     }
