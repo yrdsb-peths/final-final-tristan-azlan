@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Ball here.
@@ -16,11 +17,18 @@ public class Ball extends Actor
     
     // add ball
     private Ball ball;
+    
+    private boolean scheduledForRemoval = false;
     // initial speed
     private int x = 3;
     private int y = -3;
     public void act()
     {
+        if (scheduledForRemoval) {
+            getWorld().removeObject(this);
+            return;
+        }
+        
         moveBall();
         bounceWalls();
         bouncePaddle();
@@ -169,14 +177,14 @@ public class Ball extends Actor
     }
     
     public void resetBalls()
-    {    
-        List<Ball> allBalls = getWorld().getObjects(Ball.class);
+    {   
+        List<Ball> allBalls = new ArrayList<>(getWorld().getObjects(Ball.class));
         
         for (Ball aB : allBalls)
         {
             if (aB.getOneIntersectingObject(Paddle.class) == null)
             {
-                getWorld().removeObject(aB);
+                aB.scheduledForRemoval = true;
             }
         }
         
