@@ -1,26 +1,9 @@
 import greenfoot.*;
+import java.util.List;
 
 public class MyWorld extends World {
     private Paddle paddle;
     private Ball ball;
-    
-    private int breakCount = 0;
-
-    public void incrementBreakCount() {
-        breakCount++;
-        showText(breakCount + "!", 200, 180);
-    
-        if (breakCount >= 21) {
-            for (Ball b : getObjects(Ball.class)) {
-                b.resetBalls();
-            }
-            breakCount = 0;
-        }
-    }
-
-    public int getBreakCount() {
-        return breakCount;
-    }
     
     public MyWorld() {
         super(600, 400, 1);
@@ -40,11 +23,6 @@ public class MyWorld extends World {
                     TNT_Block block1 = new TNT_Block();
                     addObject(block1, 45 + j * 85, 50 + i * 85);
                 }
-                else if(x==2)
-                {
-                    Extra_Ball_Block block2 = new Extra_Ball_Block();
-                    addObject(block2, 45 + j * 85, 50 + i * 85);
-                }
                 else
                 {
                     Block block3 = new Block();
@@ -53,4 +31,12 @@ public class MyWorld extends World {
             }
         }
     } 
+    
+    public void lostBall()
+    {
+        if ( == 400)
+        {
+                        
+        }
+    }
 }

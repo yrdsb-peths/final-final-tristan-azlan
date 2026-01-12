@@ -15,12 +15,8 @@ public class TitleScreen extends World
      */
     public TitleScreen()
     {
-<<<<<<< HEAD
-        super(600,400,1);
-=======
         super(600, 400, 1);
->>>>>>> 1d7e4f41028e4c642acab4e3d59054afa1a62576
-        prepare();
+
     }
 
     private void prepare()
