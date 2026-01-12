@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Ball here.
@@ -15,26 +17,32 @@ public class Ball extends Actor
     
     // add ball
     private Ball ball;
-    
     // initial speed
     private int x = 3;
     private int y = -3;
+    
+    private int scoreCount = 0;
     private int breakCount = 0;
+    
     public void act()
     {
-        
+        resetBalls();
         moveBall();
         bounceWalls();
         bouncePaddle();
         breakAndBounceBlock();
-        resetBalls();
     }
     
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
     }
-    // make ball bounce off walls
+    
+    private void fallBall()
+    {
+        setLocation(getX() + x, getY() + y); 
+    }
+    
     private void bounceWalls()
     {
         // reverse left/right movement
@@ -53,6 +61,7 @@ public class Ball extends Actor
             setLocation(getX(), getY() - 0); // Move ball slightly up
         }
     }
+    
     
     private void breakAndBounceBlock()
     {       
@@ -89,47 +98,12 @@ public class Ball extends Actor
                 x = -x;
             }
             
-            breakCount = breakCount + 1;
+            scoreCount = scoreCount + 100;
+            breakCount += 1;
+            Greenfoot.playSound("bounce-8111.mp3");
         }
         
-        Extra_Ball_Block brokenBlock2 = (Extra_Ball_Block) getOneIntersectingObject(Extra_Ball_Block.class);
-        Actor block2 = getOneIntersectingObject(Extra_Ball_Block.class);
-        if(block2 != null)
-        {
-            int brokenBlock2X = brokenBlock2.getX();
-            int brokenBlock2Y = brokenBlock2.getY();
-            getWorld().removeObject(block2);
-            
-            ball = new Ball();
-            getWorld().addObject(ball, brokenBlock2X, brokenBlock2Y);
-            
-            int newDirection5 = brokenBlock2Y + 40;
-            int newDirection6 = brokenBlock2Y - 40;
-            int newDirection7 = brokenBlock2X + 40;
-            int newDirection8 = brokenBlock2X - 40;
-            
-            if(getY()<newDirection5)
-            {
-                y = -y;
-            }
-            
-            if(getY()>newDirection6)
-            {
-                y = -y;
-            }
-            
-            if(getX()<newDirection7)
-            {
-                x = -x;
-            }
-            
-            if(getX()>newDirection8)
-            {
-                x = -x;
-            }
-            
-            breakCount = breakCount + 1;
-        }
+        
         
         TNT_Block brokenBlock3 = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
         Actor block3 = getOneIntersectingObject(TNT_Block.class);
@@ -164,19 +138,32 @@ public class Ball extends Actor
                 x = -x;
             }
             
-            breakCount = breakCount + 1;
+            scoreCount = scoreCount + 100;
+            breakCount += 1;
+            Greenfoot.playSound("explosion-fx-343683.mp3");
         }
     }
     
-    private void resetBalls()
-    {
-        if(breakCount == 21)
+    public void resetBalls()
+    {   
+        if (breakCount == 21)
         {
-            Paddle finalBall = (Paddle) getOneIntersectingObject(Paddle.class);
             Actor paddle = getOneIntersectingObject(Paddle.class);
-            if(paddle != null)
-            {
-                
+            if (paddle != null) {       
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 7; j++) {
+                        int x = Greenfoot.getRandomNumber(12);
+            
+                        if (x == 1) {
+                            getWorld().addObject(new TNT_Block(), 45 + j * 85, 50 + i * 85);
+                        }
+                        else 
+                        {
+                            getWorld().addObject(new Block(), 45 + j * 85, 50 + i * 85);
+                        }
+                    }
+                }
+                breakCount = 0;
             }
         }
     }

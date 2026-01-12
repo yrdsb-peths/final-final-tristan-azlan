@@ -1,8 +1,10 @@
 import greenfoot.*;
+import java.util.List;
 
 public class MyWorld extends World {
     private Paddle paddle;
     private Ball ball;
+    
     public MyWorld() {
         super(600, 400, 1);
         // add paddle
@@ -21,11 +23,6 @@ public class MyWorld extends World {
                     TNT_Block block1 = new TNT_Block();
                     addObject(block1, 45 + j * 85, 50 + i * 85);
                 }
-                else if(x==2)
-                {
-                    Extra_Ball_Block block2 = new Extra_Ball_Block();
-                    addObject(block2, 45 + j * 85, 50 + i * 85);
-                }
                 else
                 {
                     Block block3 = new Block();
@@ -33,7 +30,13 @@ public class MyWorld extends World {
                 }
             }
         }
-    }
-    // make game reset when ball touches ground
+    } 
     
+    public void lostBall()
+    {
+        if ( == 400)
+        {
+                        
+        }
+    }
 }

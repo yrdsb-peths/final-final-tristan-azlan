@@ -23,6 +23,5 @@ public class Paddle extends Actor
         {
             setLocation(getX() + 8, getY());
         }
-        
     }
 }
