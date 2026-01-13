@@ -16,7 +16,7 @@ public class TitleScreen extends World
     public TitleScreen()
     {
         super(600, 400, 1);
-
+        prepare();
     }
 
     private void prepare()

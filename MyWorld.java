@@ -32,11 +32,4 @@ public class MyWorld extends World {
         }
     } 
     
-    public void lostBall()
-    {
-        if ( == 400)
-        {
-                        
-        }
-    }
 }
