@@ -106,43 +106,29 @@ public class Ball extends Actor
         
         
         
-        TNT_Block brokenBlock3 = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
-        Actor block3 = getOneIntersectingObject(TNT_Block.class);
-        if(block3 != null)
-        {
-            int brokenBlock3X = brokenBlock3.getX();
-            int brokenBlock3Y = brokenBlock3.getY();
-            getWorld().removeObject(block3);
-            
-            int newDirection9 = brokenBlock3Y + 40;
-            int newDirection10 = brokenBlock3Y - 40;
-            int newDirection11 = brokenBlock3X + 40;
-            int newDirection12 = brokenBlock3X - 40;
-            
-            if(getY()<newDirection9)
-            {
-                y = -y;
-            }
-            
-            if(getY()>newDirection10)
-            {
-                y = -y;
-            }
-            
-            if(getX()<newDirection11)
-            {
-                x = -x;
-            }
-            
-            if(getX()>newDirection12)
-            {
-                x = -x;
-            }
-            
-            scoreCount = scoreCount + 100;
+        TNT_Block tnt = (TNT_Block) getOneIntersectingObject(TNT_Block.class);
+        if (tnt != null) {
+            int tntX = tnt.getX();
+            int tntY = tnt.getY();
+        
+            getWorld().addObject(new Explosion(200, 200), tntX, tntY);
+        
+            getWorld().removeObject(tnt);
+        
+            y = -y; 
+            scoreCount += 100;
             breakCount += 1;
             Greenfoot.playSound("explosion-fx-343683.mp3");
         }
+    }
+    
+    public void addExplosionScore(int amount) {
+        
+        scoreCount += (amount * 100); 
+        
+        breakCount += amount; 
+        
+        System.out.println("Explosion broke " + amount + " blocks!");
     }
     
     public void resetBalls()
