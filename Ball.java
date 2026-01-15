@@ -31,7 +31,6 @@ public class Ball extends Actor
         bounceWalls();
         bouncePaddle();
         breakAndBounceBlock();
-        checkBottom();
     }
     
     private void moveBall()
@@ -151,13 +150,6 @@ public class Ball extends Actor
                 }
                 breakCount = 0;
             }
-        }
-    }
-    private void checkBottom()
-    {
-        if(getY() >= getWorld().getHeight() - 1)
-        {
-            Greenfoot.setWorld(new EndScreen(0));
         }
     }
 }
