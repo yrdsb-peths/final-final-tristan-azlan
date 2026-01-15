@@ -34,6 +34,7 @@ public class Ball extends Actor
         checkBottom();
     }
     
+    
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
