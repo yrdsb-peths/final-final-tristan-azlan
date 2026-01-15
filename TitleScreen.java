@@ -18,8 +18,10 @@ public class TitleScreen extends World
     {
         //create world with width 600, height 400, cell size 1
         super(600, 400, 1);
+
         //display instructions and prompts
         prepare();
+
     }
 
     private void prepare()

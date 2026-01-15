@@ -31,7 +31,6 @@ public class Ball extends Actor
         bounceWalls();
         bouncePaddle();
         breakAndBounceBlock();
-        checkBottom();
     }
     
     
@@ -129,7 +128,6 @@ public class Ball extends Actor
         
         breakCount += amount; 
         
-        System.out.println("Explosion broke " + amount + " blocks!");
     }
     
     public void resetBalls()
@@ -153,13 +151,6 @@ public class Ball extends Actor
                 }
                 breakCount = 0;
             }
-        }
-    }
-    private void checkBottom()
-    {
-        if(getY() >= getWorld().getHeight() - 1)
-        {
-            Greenfoot.setWorld(new EndScreen(0));
         }
     }
 }
