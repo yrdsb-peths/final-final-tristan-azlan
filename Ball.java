@@ -127,7 +127,6 @@ public class Ball extends Actor
         
         breakCount += amount; 
         
-        System.out.println("Explosion broke " + amount + " blocks!");
     }
     
     public void resetBalls()
