@@ -42,4 +42,3 @@ public class TitleScreen extends World
         showText("Move paddle with ←/→. Don't let all the balls drop.", getWidth() / 2, 330);
     }
 }
-

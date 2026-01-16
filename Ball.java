@@ -2,12 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- * Write a description of class Ball here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Ball extends Actor
 {
     /**
@@ -24,6 +19,8 @@ public class Ball extends Actor
     private int scoreCount = 0;
     private int breakCount = 0;
     
+    // The act method helps with movement of the ball and functions and
+    // reactions with other objects
     public void act()
     {
         resetBalls();
@@ -33,16 +30,20 @@ public class Ball extends Actor
         breakAndBounceBlock();
     }
     
+    // This method created the movement for the ball on th x-axis
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
     }
     
+    // This method created the movement for the ball on th y-axis
     private void fallBall()
     {
         setLocation(getX() + x, getY() + y); 
     }
     
+    // This method allows the ball to bounce from the outer rim walls of the
+    // game screen
     private void bounceWalls()
     {
         // reverse left/right movement
@@ -52,7 +53,8 @@ public class Ball extends Actor
         if (getY() <= 0)
         y = -y;  
     }
-    // make ball bounce off paddle
+    
+    // This method makes the ball bounce off the paddle
     private void bouncePaddle()
     {
         if (isTouching(Paddle.class))
@@ -62,7 +64,9 @@ public class Ball extends Actor
         }
     }
     
-    
+    // This method breaks blocks that the ball touches and changes the ball's
+    // direction based on the part of the block it touched while playing a
+    // sound as well as helping keep track of score and blocks broken
     private void breakAndBounceBlock()
     {       
         Block brokenBlock1 = (Block) getOneIntersectingObject(Block.class);
@@ -121,6 +125,7 @@ public class Ball extends Actor
         }
     }
     
+    // This method keeps track of the score and breakcount in more detail
     public void addExplosionScore(int amount) {
         
         scoreCount += (amount * 100); 
@@ -129,6 +134,8 @@ public class Ball extends Actor
         
     }
     
+    // This method allows the blocks to reset after clearing them all at the
+    // point the ball touches the paddle again
     public void resetBalls()
     {   
         if (breakCount == 21)
