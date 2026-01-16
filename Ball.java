@@ -30,7 +30,9 @@ public class Ball extends Actor
         breakAndBounceBlock();
     }
     
+
     // This method created the movement for the ball on th x-axis
+
     private void moveBall()
     {
         setLocation(getX() + x, getY() + y); 
