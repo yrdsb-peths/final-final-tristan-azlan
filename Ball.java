@@ -11,6 +11,7 @@ public class Ball extends Actor
      */
     
     // add ball
+    
     private Ball ball;
     // initial speed
     private int x = 3;
@@ -23,6 +24,8 @@ public class Ball extends Actor
     // reactions with other objects
     public void act()
     {
+        GreenfootImage image = new GreenfootImage("steel-ball.png");
+        setImage(image);
         resetBalls();
         moveBall();
         bounceWalls();

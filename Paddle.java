@@ -11,6 +11,8 @@ public class Paddle extends Actor
     // This method helps move the paddle to allow to keep the ball up
     public void act()
     {
+        GreenfootImage image = new GreenfootImage("paddle-light-red.svg.hi.png");
+        setImage(image);
         // Add your action code here.
         // if key down is left, move 8 to the left 
         if(Greenfoot.isKeyDown("left"))
